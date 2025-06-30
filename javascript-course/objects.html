@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>objects</title>
+  </head>
+  <body>
+    <script>/*
+      const product = {
+        name: 'socks', 
+        price: 1090
+      }
+      console.log(product)
+      console.log(product.name)
+      console.log(product.price)
+
+      product.name = 'cotton socks'
+      console.log(product)
+
+      product.newProperty = true
+      console.log(product)
+      delete product.newProperty
+      console.log(product)
+      */
+
+      /*
+      const product2 = {
+        name: 'shirt',
+        ['delivery-time']: '1 day',
+        rating: {
+          stars: 4.5,
+          count: 87
+        },
+        fun: function function1() {
+          console.log('function inside objects');
+        }
+      }
+      console.log(product2)
+      console.log(product2['name']) */
+      /*bracket notation allows for more properties*/
+      /*
+      console.log(product2['delivery-time'])
+      product2.fun()
+      */
+
+      /*JSON syntax is universally understandable, so JSON is used to send info to other systems
+      less info*/
+      /*
+      console.log(JSON.stringify(product2))
+      const jsonString = JSON.stringify(product2)
+      console.log(JSON.parse(jsonString)) */ /*parse turns JSON back to JS object*/
+      
+      /*autoboxxing, turns variables into objects automatically*/
+      console.log('hello'.length)
+      console.log('hello'.toUpperCase())
+
+      /*object referencing, not actually copying the thing, just the object: Copy by Reference*/
+      const object1 = {
+        message: 'hello'
+      };
+      const object2 = object1;
+      object1.message = 'Good job!';
+      console.log(object1);
+      console.log(object2);
+
+      const object3 = {
+        message: 'Good job!'
+      };
+      console.log(object1 === object3)  /*different reference*/
+      console.log(object1 === object2)  /*same reference*/
+      console.log(object1.message === object3.message)  /*same values*/
+
+      const object4 = {
+        message: 'Good job!',
+        price: 799
+      };
+      const {message, price} = object4;  /*destructuring, take values out of objects shorthand*/
+      console.log(message);
+      console.log(price)
+
+      const object5 = {
+        /*message: message*/
+        message,
+        /*method: function function1() {
+          console.log('method');
+        }*/
+        method() {
+          console.log('method')
+        }
+      };
+      console.log(object5);
+      object5.method();
+    </script>
+  </body>
+</html>
