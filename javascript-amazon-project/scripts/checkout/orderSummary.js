@@ -40,7 +40,7 @@ export function renderOrderSummary() {
             Black and Gray Athletic Cotton Socks - 6 Pairs
           </div>
           <div class="product-price">
-            $${formatCurrency(matchingProduct.priceCents)}
+            ${matchingProduct.getPrice()}
           </div>
           <div class="product-quantity
             js-product-quantity-${matchingProduct.id}">
