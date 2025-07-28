@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Chatbot</title>
+    <link rel="stylesheet" href="chatbot.css"></link>
   </head>
   <body>
     <div class="js-container"></div>
@@ -47,17 +48,21 @@
         }
         
         return (
-          <>
+          <div
+            className="chat-input-container"
+          >
             <input
               size = "30"
               placeholder="Send a message to Chatbot"
               onChange={saveInputText}
               value={inputText}
+              className="chat-input"
             ></input>
             <button
               onClick={sendMessage}
+              className="send-button"
             >Send</button>
-          </>
+          </div>
         );
       }
 
@@ -65,6 +70,27 @@
         const message = props.message;
         const sender = props.sender;
 
+        return (
+          <div className = {
+            sender === 'user'
+              ? 'chat-message-user'
+              : 'chat-message-robot'
+          }>
+            {sender === 'robot' && (
+              <img src="robot.png"
+              className = "chat-message-profile" /> 
+            )}
+            <div className = "chat-message-text">
+              {message}
+            </div>
+            {sender === 'user' && (
+              <img src = "user.png"
+              className = "chat-message-profile" />
+            )}
+          </div>
+        )
+
+        /*
         if (sender === 'robot') {
           return (
             <div>
@@ -80,11 +106,23 @@
             <img src="user.png" width="50"></img>
           </div>
         );
+        */
       }
 
       function ChatMessages({chatMessages}) {
+        const chatMessagesRef = React.useRef(null);
+
+        React.useEffect(() => {
+          const containerElem = chatMessagesRef.current;
+          if (containerElem) {
+            containerElem.scrollTop = containerElem.scrollHeight
+          }
+        }, [chatMessages]);
+
         return (
-          <>
+          <div
+            className = "chat-messages-container"
+            ref={chatMessagesRef}>
             {chatMessages.map((chatMessages) => {
               return (
                 <ChatMessage
@@ -94,7 +132,7 @@
                 ></ChatMessage>
               );
             })}
-          </>
+          </div>
         );
       }
 
@@ -122,18 +160,21 @@
 
 
         return (
-          <>
+          <div
+            className="app-container"
+          >
+            <ChatMessages
+              chatMessages={chatMessages}
+            ></ChatMessages>
             <ChatInput
               chatMessages={chatMessages}
               setChatMessages={setChatMessages}
             ></ChatInput>
-            <ChatMessages
-              chatMessages={chatMessages}
-            ></ChatMessages>
-          </>
+          </div>
         )
       }
 
+      // old
       const app = (
         <>
           <ChatInput></ChatInput>
