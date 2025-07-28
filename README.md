@@ -1,3 +1,5 @@
+Websites made during frontend courses
+
 Amazon website project
 https://lukfu.github.io/frontend-projects/javascript-amazon-project/amazon.html
 
